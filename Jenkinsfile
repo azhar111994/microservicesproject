@@ -1,6 +1,6 @@
 pipeline {
 agent {
-label 'Build-server'
+label 'build-server'
 }
 
 stages {
@@ -19,7 +19,7 @@ stage ('Build')
 {
     steps
     {
-       sh "cd /home/ubuntu/workspace/devops28thsep/account-service ; mvn clean install " 
+       sh "cd /home/ubuntu/workspace/microservices/account-service ; mvn clean install " 
     }
 }
 
@@ -28,16 +28,16 @@ stage ('dockerimageBuild')
     {
     steps
     {
-        sh "cd /home/ubuntu/workspace/devops28thsep/account-service; sudo docker build -t account-service . " 
+        sh "cd /home/ubuntu/workspace/microservices/account-service; sudo docker build -t account-service . " 
     }
 }
      stage ('dockerimagepush ') 
 {
     steps
     {
-       sh "cd /home/ubuntu/workspace/devops28thsep/account-service ; sudo  docker login -uankit1111 -pmiet@1234 "
-        sh "cd /home/ubuntu/workspace/devops28thsep/account-service ; sudo docker tag account-service ankit1111/account-service "
-        sh "cd /home/ubuntu/workspace/devops28thsep/account-service ; sudo docker push ankit1111/account-service  "
+       sh "cd /home/ubuntu/workspace/microservices/account-service ; sudo  docker login -uazharuddin11 -Azhar1994 "
+        sh "cd /home/ubuntu/workspace/microservices/account-service ; sudo docker tag account-service azharuddin11/account-service "
+        sh "cd /home/ubuntu/workspace/microservices/account-service ; sudo docker push azharuddin11/account-service  "
         
         
     }
@@ -47,8 +47,8 @@ stage ('dockerimageBuild')
 stage ('k8sdeployment') 
     {
         steps {
-            node (' Ansible-server') {
-             sh " sudo ansible-playbook /root/k8s.yaml"
+            node ('ansible-server ') {
+             sh " sudo ansible-playbook /home/ubuntu/k8s.yaml"
    
     }
 }
