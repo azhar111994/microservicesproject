@@ -35,7 +35,7 @@ stage ('dockerimageBuild')
 {
     steps
     {
-       sh "cd /home/ubuntu/workspace/microservices/account-service ; sudo  docker login -uazharuddin11 -Azhar1994 "
+       sh "cd /home/ubuntu/workspace/microservices/account-service ; sudo  docker login -uazharuddin11 -pAzhar1994 "
         sh "cd /home/ubuntu/workspace/microservices/account-service ; sudo docker tag account-service azharuddin11/account-service "
         sh "cd /home/ubuntu/workspace/microservices/account-service ; sudo docker push azharuddin11/account-service  "
         
