@@ -47,7 +47,7 @@ stage ('dockerimageBuild')
 stage ('k8sdeployment') 
     {
         steps {
-            node ('ansible-server ') {
+            node ('ansible-server') {
              sh " sudo ansible-playbook /home/ubuntu/k8s.yaml"
    
     }
